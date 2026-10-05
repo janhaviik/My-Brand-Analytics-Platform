@@ -12,7 +12,6 @@
   <img src="https://img.shields.io/badge/hosting_cost-%240-9be3c0" alt="Hosting cost zero">
 </p>
 
-![Dashboard preview](docs/screenshot.png)
 
 ## 💡 Why I built this
 
