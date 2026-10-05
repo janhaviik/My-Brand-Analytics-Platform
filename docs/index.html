@@ -55,8 +55,21 @@ h3{font:600 15px Figtree,sans-serif;margin:14px 0 4px}
 .track{height:16px;border:2.5px solid var(--ink);border-radius:999px;background:var(--white);overflow:hidden}
 .fill{display:block;height:100%;background:var(--pink)}
 .hrow span:last-child{text-align:right;font-weight:600}
+h2.big{font-size:30px;margin:10px 0 6px}
+.lead{margin:0 0 16px;max-width:60ch}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.step{background:var(--white);border:2.5px solid var(--ink);padding:18px 22px}
+.step:nth-child(1){border-radius:28px 12px 28px 12px;box-shadow:6px 6px 0 var(--pink)}
+.step:nth-child(2){border-radius:12px 28px 12px 28px;box-shadow:6px 6px 0 var(--mint)}
+.step:nth-child(3){border-radius:12px 28px 12px 28px;box-shadow:6px 6px 0 var(--lav)}
+.step:nth-child(4){border-radius:28px 12px 28px 12px;box-shadow:6px 6px 0 var(--butter)}
+.step:nth-child(n+5){border-radius:20px;box-shadow:6px 6px 0 var(--ink)}
+.step:last-child:nth-child(odd){grid-column:1/-1}
+.step h3{font:600 20px Fredoka,"Trebuchet MS",sans-serif;margin:0 0 8px}
+.step p{margin:6px 0;font-size:15px}
 footer{margin-top:26px;font-size:14px;max-width:70ch}
 @media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.note{transform:none}}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.bar i{animation:none}}
 </style>
 </head>
@@ -98,6 +111,12 @@ footer{margin-top:26px;font-size:14px;max-width:70ch}
       <ul id="notes"></ul>
     </aside>
   </div>
+
+  <section id="next" hidden>
+    <h2 class="big">What I'll try next</h2>
+    <p class="lead">Ideas based on the numbers above. I'll check them against my next 90-day snapshot.</p>
+    <div class="steps" id="steps"></div>
+  </section>
 
   <footer id="foot"></footer>
 </div>
@@ -200,6 +219,11 @@ function snap() {
   $("foot").textContent = "Instagram figures come from Instagram Insights (" + S.period.days + " days). Orders and revenue are from my own records" +
     (S.sales.approximate ? " and are approximate" : "") + ". Shop: " + D.site + ".";
 }
+const steps = D.nextSteps || [];
+$("next").hidden = !steps.length;
+$("steps").innerHTML = steps.map(s =>
+  `<article class="step"><h3>${s.title}</h3><p><b>What I see:</b> ${s.why}</p>` +
+  `<p><b>What I'll try:</b> ${s.do}</p><p><b>How I'll know:</b> ${s.track}</p></article>`).join("");
 D.snapshot ? snap() : render();
 </script>
 </body>
