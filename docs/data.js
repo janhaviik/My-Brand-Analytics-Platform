@@ -2,162 +2,71 @@ window.STUDIO = {
  "name": "Whos Studio",
  "site": "whosstudio.co",
  "currency": "₹",
- "isSample": true,
- "months": [
-  {
-   "month": "2025-11",
-   "orders": 21,
-   "revenue": 8790.0,
-   "repeat": 6,
-   "reach": 8200,
-   "visits": 610,
-   "dms": 52,
-   "m": "Nov"
-  },
-  {
-   "month": "2025-12",
-   "orders": 25,
-   "revenue": 12610.0,
-   "repeat": 6,
-   "reach": 9100,
-   "visits": 690,
-   "dms": 61,
-   "m": "Dec"
-  },
-  {
-   "month": "2026-01",
-   "orders": 29,
-   "revenue": 15770.0,
-   "repeat": 1,
-   "reach": 10400,
-   "visits": 820,
-   "dms": 70,
-   "m": "Jan"
-  },
-  {
-   "month": "2026-02",
-   "orders": 36,
-   "revenue": 16390.0,
-   "repeat": 7,
-   "reach": 12800,
-   "visits": 1010,
-   "dms": 88,
-   "m": "Feb"
-  },
-  {
-   "month": "2026-03",
-   "orders": 31,
-   "revenue": 15380.0,
-   "repeat": 5,
-   "reach": 11900,
-   "visits": 930,
-   "dms": 80,
-   "m": "Mar"
-  },
-  {
-   "month": "2026-04",
-   "orders": 42,
-   "revenue": 20300.0,
-   "repeat": 10,
-   "reach": 14200,
-   "visits": 1150,
-   "dms": 102,
-   "m": "Apr"
-  },
-  {
-   "month": "2026-05",
-   "orders": 49,
-   "revenue": 24270.0,
-   "repeat": 12,
-   "reach": 15800,
-   "visits": 1300,
-   "dms": 118,
-   "m": "May"
-  },
-  {
-   "month": "2026-06",
-   "orders": 53,
-   "revenue": 26050.0,
-   "repeat": 17,
-   "reach": 17500,
-   "visits": 1420,
-   "dms": 126,
-   "m": "Jun"
-  },
-  {
-   "month": "2026-07",
-   "orders": 48,
-   "revenue": 21970.0,
-   "repeat": 8,
-   "reach": 16900,
-   "visits": 1350,
-   "dms": 119,
-   "m": "Jul"
-  },
-  {
-   "month": "2026-08",
-   "orders": 61,
-   "revenue": 30640.0,
-   "repeat": 13,
-   "reach": 19800,
-   "visits": 1620,
-   "dms": 141,
-   "m": "Aug"
-  },
-  {
-   "month": "2026-09",
-   "orders": 70,
-   "revenue": 32980.0,
-   "repeat": 21,
-   "reach": 22400,
-   "visits": 1830,
-   "dms": 163,
-   "m": "Sep"
-  },
-  {
-   "month": "2026-10",
-   "orders": 82,
-   "revenue": 39860.0,
-   "repeat": 26,
-   "reach": 25100,
-   "visits": 2080,
-   "dms": 188,
-   "m": "Oct"
-  }
- ],
- "products": [
-  {
-   "name": "Product one",
-   "units": 232,
-   "revenue": 104400.0,
-   "img": "",
-   "emoji": "🎀"
-  },
-  {
-   "name": "Product three",
-   "units": 130,
-   "revenue": 67600.0,
-   "img": "",
-   "emoji": "🍓"
-  },
-  {
-   "name": "Product two",
-   "units": 171,
-   "revenue": 66690.0,
-   "img": "",
-   "emoji": "🌷"
-  },
-  {
-   "name": "Product four",
-   "units": 94,
-   "revenue": 26320.0,
-   "img": "",
-   "emoji": "✨"
-  }
- ],
+ "isSample": false,
+ "months": [],
+ "products": [],
  "notes": [
-  "Sample note: write what your best month had in common.",
-  "Sample note: write which post type brought the most DMs.",
-  "Sample note: write what you changed after reading the numbers."
- ]
+  "About three quarters of my views came from people who don't follow me yet, and Reels reached almost all of them.",
+  "Roughly 1 in 10 viewers visited my profile, and about 1 in 80 profile visits ended in an order.",
+  "Four in five followers are 18 to 34, and almost 80% are in India."
+ ],
+ "snapshot": {
+  "period": {
+   "label": "2 Jul to 29 Sep 2026",
+   "days": 90
+  },
+  "instagram": {
+   "views": 56528,
+   "viewers": 23947,
+   "followers_share": 25.3,
+   "interactions": 2737,
+   "profile_visits": 2503,
+   "bio_link_taps": 146,
+   "followers": 187,
+   "net_followers": 65,
+   "reach_by_type": {
+    "Reels": 23000,
+    "Posts": 11000,
+    "Stories": 9700
+   },
+   "interactions_by_type": {
+    "Reels": 1400,
+    "Stories": 585,
+    "Posts": 451
+   }
+  },
+  "audience": {
+   "gender": {
+    "Women": 74.6,
+    "Men": 25.4
+   },
+   "age": {
+    "13-17": 4.9,
+    "18-24": 50.0,
+    "25-34": 30.3,
+    "35-44": 7.4,
+    "45-54": 7.4
+   },
+   "countries": {
+    "India": 79.5,
+    "United States": 7.0,
+    "Germany": 2.2,
+    "United Kingdom": 2.2,
+    "Pakistan": 1.6
+   }
+  },
+  "sales": {
+   "orders": 30,
+   "revenue": 21500,
+   "approximate": true
+  },
+  "derived": {
+   "avg_order": 716.6666666666666,
+   "visit_rate": 0.10452248715914311,
+   "order_rate": 0.011985617259288853,
+   "link_rate": 0.058330003995205756,
+   "interaction_rate": 0.048418482875743,
+   "nonfollower_share": 74.7
+  }
+ }
 };
