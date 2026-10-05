@@ -2,11 +2,10 @@
   "name": "Whos Studio",
   "site": "whosstudio.co",
   "currency": "₹",
-  "is_sample": true,
-  "product_emoji": {"Product one": "🎀", "Product two": "🌷", "Product three": "🍓", "Product four": "✨"},
+  "is_sample": false,
   "notes": [
-    "Sample note: write what your best month had in common.",
-    "Sample note: write which post type brought the most DMs.",
-    "Sample note: write what you changed after reading the numbers."
+    "About three quarters of my views came from people who don't follow me yet, and Reels reached almost all of them.",
+    "Roughly 1 in 10 viewers visited my profile, and about 1 in 80 profile visits ended in an order.",
+    "Four in five followers are 18 to 34, and almost 80% are in India."
   ]
 }
