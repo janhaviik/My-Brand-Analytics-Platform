@@ -1,5 +1,5 @@
 {
-  "name": "Whos Studio",
+  "name": "WhosStudio.co",
   "site": "whosstudio.co",
   "currency": "₹",
   "is_sample": false,
@@ -35,8 +35,7 @@
     },
     {
       "title": "Measure the missing steps",
-      "why": "I can't yet see DMs, which post led to an order, or who bought twice.",
-      "do": "Log every order with its date, product, an anonymous customer ID and where the customer found me, and count buying DMs each week.",
+      "do": "Log every order with its date, product and where the customer found me, and count buying DMs each week.",
       "track": "Monthly trends, repeat rate and a DM step in the funnel."
     }
   ]
