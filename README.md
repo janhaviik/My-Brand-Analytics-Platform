@@ -62,21 +62,6 @@ flowchart LR
 | Hosting | GitHub Pages, zero cost |
 | Product thinking | Funnel analysis built from my own shop's data |
 
-## 🚀 Run it locally
-
-```
-python -m unittest discover -s tests -v   # run the tests
-python -m studio summary                  # headline numbers in the terminal
-python -m studio build                    # regenerate docs/data.js
-```
-
-Then open `docs/index.html` in a browser. Needs Python 3.9 or newer, nothing else.
-
-## 🔄 Update it
-
-Edit `data/snapshot.json` and `data/settings.json`, run `python -m studio build`, and commit the new `docs/data.js`. Instagram only shows 90 days at a time, so I add a new snapshot every quarter.
-
-The repo also contains an order-level mode (`studio/db.py` and `studio/analytics.py`: CSV to SQLite to monthly revenue, repeat buyers and funnel). It switches on when `data/snapshot.json` is absent and `data/orders.csv` and `data/instagram.csv` exist.
 
 ## 🗺️ Roadmap
 
