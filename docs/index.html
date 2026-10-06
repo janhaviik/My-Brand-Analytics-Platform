@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Whos Studio dashboard</title>
+<title>WhosStudio.co dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
@@ -18,9 +18,11 @@ h2{font-size:22px;margin-bottom:12px}
 .top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:22px}
 .sub{margin:8px 0 0;max-width:46ch}
 .badge{display:inline-block;vertical-align:middle;margin-left:10px;padding:4px 12px;background:var(--butter);border:2.5px solid var(--ink);border-radius:8px;font:500 15px Fredoka,sans-serif;transform:rotate(-4deg)}
-.seg{display:flex;gap:8px;flex-wrap:wrap}
-.seg button{font:600 15px Figtree,sans-serif;color:var(--ink);background:var(--white);border:2.5px solid var(--ink);border-radius:999px;padding:7px 16px;cursor:pointer}
-.seg button[aria-pressed=true]{background:var(--ink);color:var(--white)}
+[hidden]{display:none!important}
+.seg,.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.seg button,.tabs button{font:600 15px Figtree,sans-serif;color:var(--ink);background:var(--white);border:2.5px solid var(--ink);border-radius:999px;padding:7px 16px;cursor:pointer}
+.seg button[aria-pressed=true],.tabs button[aria-pressed=true]{background:var(--ink);color:var(--white)}
+.tabs{margin:0 0 12px}.tabs button{padding:4px 14px;font-size:14px}
 :focus-visible{outline:3px dashed var(--ink);outline-offset:3px}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
 .chip{border:2.5px solid var(--ink);padding:16px 18px;box-shadow:5px 5px 0 var(--ink)}
@@ -44,6 +46,7 @@ h2{font-size:22px;margin-bottom:12px}
 .read{margin:12px 0 0;font-weight:600}
 .stage{border:2.5px solid var(--ink);border-radius:999px;padding:8px 16px;display:flex;justify-content:space-between;gap:10px;font-weight:600}
 .stage:nth-of-type(1){background:var(--lav)}.stage:nth-of-type(2){background:var(--pink)}.stage:nth-of-type(3){background:var(--butter)}.stage:nth-of-type(4){background:var(--mint)}
+.stage{min-width:190px}.stage span{white-space:nowrap}
 .pct{margin:3px 0 3px 16px;font-size:13px}
 .prod{display:flex;align-items:center;gap:14px;padding:8px 0;border-top:2px dashed #e5d3e6}
 .prod:first-of-type{border-top:0}
@@ -51,7 +54,7 @@ h2{font-size:22px;margin-bottom:12px}
 .thumb img{width:100%;height:100%;object-fit:cover}
 .prod b{display:block}.prod small{font-size:14px}.prod .tot{margin-left:auto;font-weight:600}
 h3{font:600 15px Figtree,sans-serif;margin:14px 0 4px}
-.hrow{display:grid;grid-template-columns:96px 1fr 52px;gap:10px;align-items:center;margin:6px 0;font-size:14px}
+.hrow{display:grid;grid-template-columns:112px 1fr 52px;gap:10px;align-items:center;margin:6px 0;font-size:14px}
 .track{height:16px;border:2.5px solid var(--ink);border-radius:999px;background:var(--white);overflow:hidden}
 .fill{display:block;height:100%;background:var(--pink)}
 .hrow span:last-child{text-align:right;font-weight:600}
@@ -67,9 +70,15 @@ h2.big{font-size:30px;margin:10px 0 6px}
 .step:last-child:nth-child(odd){grid-column:1/-1}
 .step h3{font:600 20px Fredoka,"Trebuchet MS",sans-serif;margin:0 0 8px}
 .step p{margin:6px 0;font-size:15px}
+.play{border-radius:28px;box-shadow:6px 6px 0 var(--butter);margin-bottom:24px}
+.sliders{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:12px 0}
+.sliders label{display:block;font-weight:600}
+.sliders output{float:right;font:600 20px Fredoka,sans-serif}
+.sliders input{width:100%;accent-color:var(--ink);margin-top:8px}
+.result{font-size:18px;margin:4px 0 14px}.result .num{font-size:30px}
 footer{margin-top:26px;font-size:14px;max-width:70ch}
 @media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.note{transform:none}}
-@media(max-width:760px){.steps{grid-template-columns:1fr}}
+@media(max-width:760px){.steps,.sliders{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.bar i{animation:none}}
 </style>
 </head>
@@ -77,10 +86,10 @@ footer{margin-top:26px;font-size:14px;max-width:70ch}
 <div class="wrap">
   <header class="top">
     <div>
-      <h1>Whos Studio<span class="badge" id="badge" hidden></span></h1>
+      <h1><span id="title">WhosStudio.co</span><span class="badge" id="badge" hidden>sample data</span></h1>
       <p class="sub" id="sub">How the shop is doing: orders, revenue and how Instagram turns into sales.</p>
     </div>
-    <div class="seg" role="group" aria-label="Time range">
+    <div class="seg" id="range" role="group" aria-label="Time range">
       <button data-n="3" aria-pressed="false">Last 3 months</button>
       <button data-n="6" aria-pressed="false">Last 6 months</button>
       <button data-n="12" aria-pressed="true">Last 12 months</button>
@@ -92,6 +101,10 @@ footer{margin-top:26px;font-size:14px;max-width:70ch}
   <div class="grid">
     <section class="card c-chart">
       <h2 id="t-chart">Revenue by month</h2>
+      <div class="tabs" id="metric" role="group" aria-label="Metric" hidden>
+        <button data-k="reach" aria-pressed="true">Accounts reached</button>
+        <button data-k="inter" aria-pressed="false">Interactions</button>
+      </div>
       <div class="bars" id="bars"></div>
       <p class="read" id="read" aria-live="polite"></p>
     </section>
@@ -104,6 +117,11 @@ footer{margin-top:26px;font-size:14px;max-width:70ch}
   <div class="grid">
     <section class="card c-prod">
       <h2 id="t-prod">Top products</h2>
+      <div class="tabs" id="aud" role="group" aria-label="Audience view" hidden>
+        <button data-k="age" aria-pressed="true">Age</button>
+        <button data-k="gender" aria-pressed="false">Gender</button>
+        <button data-k="country" aria-pressed="false">Countries</button>
+      </div>
       <div id="prods"></div>
     </section>
     <aside class="note">
@@ -111,6 +129,19 @@ footer{margin-top:26px;font-size:14px;max-width:70ch}
       <ul id="notes"></ul>
     </aside>
   </div>
+
+  <section class="card play" id="play" hidden>
+    <h2>What if I improved the funnel?</h2>
+    <p class="lead">Move the sliders to see what the same viewers could turn into. It's a what-if, not a forecast.</p>
+    <div class="sliders">
+      <label>Viewers who visit my profile <output id="o-visit"></output>
+        <input type="range" id="s-visit" min="5" max="20" step="0.5"></label>
+      <label>Profile visits that become orders <output id="o-order"></output>
+        <input type="range" id="s-order" min="0.5" max="4" step="0.1"></label>
+    </div>
+    <p class="result" id="result" aria-live="polite"></p>
+    <div class="tabs"><button id="reset">Back to today's numbers</button></div>
+  </section>
 
   <section id="next" hidden>
     <h2 class="big">What I'll try next</h2>
@@ -175,10 +206,11 @@ $("notes").innerHTML = D.notes.map(n => `<li>${n}</li>`).join("");
 $("foot").textContent = (D.isSample ? "The numbers here are sample data until data/ holds your real exports. " : "") +
   "Built with plain HTML, CSS and JavaScript. Shop: " + D.site + ".";
 $("badge").hidden = !D.isSample;
+$("title").textContent = D.name;
 
-document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+document.querySelectorAll("#range button").forEach(b => b.addEventListener("click", () => {
   span = +b.dataset.n;
-  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  document.querySelectorAll("#range button").forEach(x => x.setAttribute("aria-pressed", x === b));
   render();
 }));
 
@@ -188,11 +220,38 @@ function hbars(obj, fmtv, color) {
   return Object.entries(obj).map(([k, v]) =>
     `<div class="hrow"><span>${k}</span><span class="track"><span class="fill" style="width:${v / max * 100}%;background:${color}"></span></span><span>${fmtv(v)}</span></div>`).join("");
 }
+function tabs(id, pick) {
+  const box = $(id); box.hidden = false;
+  box.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    box.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    pick(b.dataset.k);
+  }));
+}
+
+function play() {
+  const S = D.snapshot, I = S.instagram, d = S.derived;
+  const v0 = +(d.visit_rate * 100).toFixed(1), o0 = +(d.order_rate * 100).toFixed(1);
+  const sv = $("s-visit"), so = $("s-order");
+  const calc = () => {
+    const vr = +sv.value, or = +so.value;
+    const orders = Math.round(I.viewers * vr / 100 * or / 100), rev = orders * d.avg_order;
+    const dOrd = orders - S.sales.orders, dRev = rev - S.sales.revenue;
+    $("o-visit").textContent = vr.toFixed(1) + "%"; $("o-order").textContent = or.toFixed(1) + "%";
+    $("result").innerHTML = `The same ${fmt(I.viewers)} viewers would mean <span class="num">${orders}</span> orders and about ` +
+      `<span class="num">${cur}${fmt(rev)}</span>` +
+      (dOrd ? ` (${dOrd > 0 ? "+" : "-"}${Math.abs(dOrd)} orders, ${dRev > 0 ? "+" : "-"}${cur}${fmt(Math.abs(dRev))} compared with now).` : ", which is today's result.");
+  };
+  const reset = () => { sv.value = v0; so.value = o0; calc(); };
+  sv.addEventListener("input", calc); so.addEventListener("input", calc);
+  $("reset").addEventListener("click", reset);
+  $("play").hidden = false; reset();
+}
+
 function snap() {
   const S = D.snapshot, I = S.instagram, d = S.derived, A = S.audience;
   const approx = S.sales.approximate ? " (approx.)" : "";
   $("sub").textContent = "Instagram and sales snapshot, " + S.period.label + ".";
-  document.querySelector(".seg").hidden = true;
+  $("range").hidden = true;
   $("kpis").innerHTML = [
     [cur + fmt(S.sales.revenue), "Revenue" + approx],
     [fmt(S.sales.orders), "Orders"],
@@ -200,11 +259,16 @@ function snap() {
     [(d.order_rate * 100).toFixed(1) + "%", "Profile visits that became orders"]
   ].map(k => `<div class="chip"><span class="num">${k[0]}</span>${k[1]}</div>`).join("");
 
-  $("t-chart").textContent = "Accounts reached, by content type";
+  const types = {
+    reach: ["Accounts reached, by content type", I.reach_by_type, "var(--pink)",
+      fmt(I.viewers) + " accounts saw the shop, and " + d.nonfollower_share.toFixed(1) + "% of " + fmt(I.views) + " views came from non-followers."],
+    inter: ["Interactions, by content type", I.interactions_by_type, "var(--butter)",
+      fmt(I.interactions) + " interactions in total, about " + (d.interaction_rate * 100).toFixed(1) + "% of views. " +
+      I.net_followers + " net new followers, " + I.followers + " followers now."]
+  };
+  const drawType = k => { const t = types[k]; $("t-chart").textContent = t[0]; $("bars").innerHTML = hbars(t[1], kfmt, t[2]); $("read").textContent = t[3]; };
   const bars = $("bars"); bars.className = ""; bars.style.height = "auto";
-  bars.innerHTML = hbars(I.reach_by_type, kfmt, "var(--pink)");
-  $("read").textContent = "Interactions: " + Object.entries(I.interactions_by_type).map(([k, v]) => k + " " + kfmt(v)).join(", ") +
-    " (" + fmt(I.interactions) + " in total). " + I.net_followers + " net new followers, " + I.followers + " followers now.";
+  tabs("metric", drawType); drawType("reach");
 
   const st = [["Viewers", I.viewers], ["Visited the profile", I.profile_visits], ["Placed an order", S.sales.orders]];
   $("funnel").innerHTML = st.map((s, i) =>
@@ -213,11 +277,14 @@ function snap() {
     `<p class="pct">${fmt(I.bio_link_taps)} people also tapped the bio link.</p>`;
 
   $("t-prod").textContent = "Who follows the shop";
-  $("prods").innerHTML = A ? "<h3>Gender</h3>" + hbars(A.gender, v => v + "%", "var(--lav)") +
-    "<h3>Age</h3>" + hbars(A.age, v => v + "%", "var(--mint)") +
-    "<h3>Top countries</h3>" + hbars(A.countries, v => v + "%", "var(--butter)") : "";
+  if (A) {
+    const aud = { age: [A.age, "var(--mint)"], gender: [A.gender, "var(--lav)"], country: [A.countries, "var(--butter)"] };
+    const drawAud = k => $("prods").innerHTML = hbars(aud[k][0], v => v + "%", aud[k][1]);
+    tabs("aud", drawAud); drawAud("age");
+  }
   $("foot").textContent = "Instagram figures come from Instagram Insights (" + S.period.days + " days). Orders and revenue are from my own records" +
     (S.sales.approximate ? " and are approximate" : "") + ". Shop: " + D.site + ".";
+  play();
 }
 const steps = D.nextSteps || [];
 $("next").hidden = !steps.length;
