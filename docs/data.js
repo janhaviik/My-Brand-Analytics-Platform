@@ -1,5 +1,5 @@
 window.STUDIO = {
- "name": "Whos Studio",
+ "name": "WhosStudio.co",
  "site": "whosstudio.co",
  "currency": "₹",
  "isSample": false,
@@ -84,6 +84,7 @@ window.STUDIO = {
     "United States": 7.0,
     "Germany": 2.2,
     "United Kingdom": 2.2,
+    "Pakistan": 1.6
    }
   },
   "sales": {
