@@ -43,4 +43,5 @@ def payload(data, cfg):
     """Shape the data the way docs/index.html expects it."""
     return {"name": cfg["name"], "site": cfg["site"], "currency": cfg.get("currency", "₹"),
             "isSample": cfg.get("is_sample", False), "months": [], "products": [],
-            "notes": cfg.get("notes", []), "snapshot": {**data, "derived": derive(data)}}
+            "notes": cfg.get("notes", []), "nextSteps": cfg.get("next_steps", []),
+            "snapshot": {**data, "derived": derive(data)}}
